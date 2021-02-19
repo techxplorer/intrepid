@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-  {{- partial "head.html" . -}}
+  {{ partial "head.html" . }}
   <body>
     <div id="wrapper">
       <div class="container">
-        {{- partial "header.html" . -}}
-        {{- block "main" . }}{{- end }}
+        {{ partial "header.html" . }}
+        {{ block "main" . }}{{ end }}
       </div>
     </div>
-    {{- partial "footer.html" . -}}
-    {{- partial "foot.html" . -}}
+    {{ partial "footer.html" . }}
+    {{ partial "foot.html" . }}
   </body>
 </html>
