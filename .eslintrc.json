@@ -1,0 +1,24 @@
+{
+  "env": {
+    "jquery": true,
+    "browser": true
+  },
+  "globals": {
+    "feather": "readonly"
+  },
+  "extends": [
+    "eslint:recommended",
+    "jquery"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "strict": 1
+  }
+}

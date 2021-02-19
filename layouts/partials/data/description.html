@@ -1,0 +1,15 @@
+{{/*
+  Based on a technique I found here:
+  https://github.com/MunifTanjim/minimo/blob/master/layouts/partials/data/description
+*/}}
+{{ with .Description }}
+  {{ . }}
+{{ else }}
+  {{ if .IsPage }}
+    {{ .Summary }}
+  {{ else }}
+    {{ with .Site.Params.info.description }}
+      {{ . }}
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        {{ .Site.Params.title404 }}
+      </h1>
+      <h2 class="subtitle">
+        {{ .Site.Params.subtitle404 }}
+      </h2>
+      <p>
+        Go back to <a href="{{ "/" | absURL }}">the homepage</a>.
+      </p>
+    </div>
+  </div>
+</section>
+{{ end }}

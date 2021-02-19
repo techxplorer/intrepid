@@ -1,0 +1,15 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Intrepid"
+license = "MIT"
+licenselink = "https://github.com/techxplorer/intrepid/blob/main/LICENSE"
+description = "The base theme for my websites built with Hugo"
+homepage = "https://github.com/techxplorer/intrepid/blob/main/README.md"
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "Corey Wallis <corey@techxplorer.com>"
+  homepage = "https://techxplorer.com"

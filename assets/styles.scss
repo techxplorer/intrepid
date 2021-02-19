@@ -1,0 +1,84 @@
+@import "css/bulma/bulma";
+
+/* main page */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#wrapper {
+  flex: 1;
+}
+
+/* hero with background images */
+.hero.has-background {
+  position: relative;
+  overflow: hidden;
+}
+.hero-background {
+  position: absolute;
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  height: 100%;
+}
+.hero-background.is-transparent {
+  opacity: 0.3;
+}
+
+.hero-background.is-grayscale {
+  filter: grayscale(100%);
+}
+
+.hero-credit {
+  position: absolute;
+  bottom: 0;
+}
+
+/* footer styles */
+@media only screen and (max-width: 1024px) {
+  footer ul {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .level-item {
+    align-items: normal;
+    justify-content: normal;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  footer ul {
+    display: inline-flex;
+    flex-direction: row;
+  }
+}
+
+footer ul li {
+  text-align: left;
+  margin-right: 1rem;
+}
+
+/* improve feather icons */
+.title .feather {
+  height: 2rem;
+  width: auto;
+  vertical-align: bottom;
+}
+
+.navbar-item .feather {
+  height: 1em;
+  width: auto;
+  vertical-align: bottom;
+}
+
+h3 .feather {
+  vertical-align: bottom;
+}
+
+button.navbar-burger {
+  background-color: #363636;
+  border: none;
+}
