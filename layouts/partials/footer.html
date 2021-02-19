@@ -1,0 +1,21 @@
+<footer class="footer pb-5 mt-4">
+  <div class="container has-text-centered">
+    <p>
+      A <a href="https://techxplorer.com">Techxplorer</a> project. Copyright © 2019 - {{ now.Year }}
+    </p>
+  </div>
+  <div class="container has-text-centered">
+    <ul>
+      {{ range .Site.Menus.social }}
+        <li><a href="{{ .URL }}" target="_blank" rel="noopener"><span class="is-sr-only">Open my {{ .Name }} account in a new tab</span>{{ with .Pre }}{{ partial "feather-icon.html" . }}{{ end }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="container has-text-centered is-footer-menu">
+    <ul>
+    {{ range .Site.Menus.footer }}
+      <li> {{ .Pre }}: <a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
+    {{ end }}
+    </ul>
+  </div>
+</footer>

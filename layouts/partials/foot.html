@@ -1,0 +1,6 @@
+{{ $jquery  := resources.Get "js/jquery.slim.js" }}
+{{ $feather := resources.Get "js/feather.js" }}
+
+{{ $global := resources.Get "script.js" }}
+{{ $js := slice $jquery $feather $global | resources.Concat "js/bundle.js" | resources.Minify | fingerprint }}
+<script src="{{ $js.Permalink }}"></script>

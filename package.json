@@ -1,0 +1,27 @@
+{
+  "name": "intrepid",
+  "version": "1.0.0",
+  "description": "A base theme for my web projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "postinstall",
+    "lint": "html-validate --config .htmlvalidate.json '../../public/**/*.html'"
+  },
+  "author": "Corey Wallis <corey@techxplorer.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "bulma": "^0.9.2",
+    "eslint": "^7.20.0",
+    "eslint-config-jquery": "^3.0.0",
+    "feather-icons": "^4.28.0",
+    "jquery": "^3.5.1",
+    "postinstall": "^0.7.0"
+  },
+  "postinstall": {
+    "node_modules/bulma/*": "copy assets/css/bulma/",
+    "node_modules/feather-icons/dist/feather.js": "copy assets/js/",
+    "node_modules/jquery/dist/jquery.js": "copy assets/js/",
+    "node_modules/jquery/dist/jquery.slim.js": "copy assets/js/"
+  }
+}

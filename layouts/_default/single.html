@@ -1,0 +1,9 @@
+{{ define "main" }}
+{{ $image := .Resources.GetMatch "cover-photo.jpg" }}
+{{ partial "hero.html" (dict "context" . "hero_image" $image) }}
+<section class="box mt-2">
+  <div class="content">
+    {{ .Content }}
+  </div>
+</section>
+{{ end }}

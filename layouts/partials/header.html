@@ -1,0 +1,44 @@
+<nav class="navbar is-dark is-spaced" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ "/" | absURL }}">
+      {{ with .Site.Params.brandicon }}{{ partial "feather-icon.html" . }}{{ end }}{{ .Site.Title }}
+    </a>
+    <button type="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      {{ range .Site.Menus.header }}
+        <a href="{{ .URL | absURL }}" class="navbar-item">
+          {{ with .Pre }}{{ partial "feather-icon.html" . }}{{ end }}{{ .Name }}
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</nav>
+
+<div class="box">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+    </ul>
+    {{ define "breadcrumbnav" }}
+        {{ if .p1.Parent }}
+          {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+          {{ else if not .p1.IsHome }}
+            {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+          {{ end }}
+            <li{{ if eq .p1 .p2 }} class="active"{{ end }}>
+            <a href="{{ .p1.Permalink }}">
+              {{ if not .p1.IsHome }}
+                {{ truncate 28 .p1.Title }}</a>
+              {{ else }}
+                Home </a>
+              {{ end }}
+          </li>
+        {{ end }}
+  </nav>
+</div>
