@@ -1,4 +1,8 @@
-{{ $jquery  := resources.Get "js/jquery.slim.js" }}
+{{ $jquery := resources.Get "js/jquery.slim.js" }}
+{{ if eq .Site.Params.jqueryType "full" }}
+  {{ $jquery = resources.Get "js/jquery.js" }}
+{{ end }}
+
 {{ $feather := resources.Get "js/feather.js" }}
 
 {{ $global := resources.Get "script.js" }}

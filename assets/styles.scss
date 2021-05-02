@@ -78,6 +78,31 @@ h3 .feather {
   vertical-align: bottom;
 }
 
+/* improve display of cards */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-footer {
+  margin-top: auto
+}
+
+.card-footer-item.shrink {
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+/* Misc tweaks */
+.tag:not(body) {
+  height: auto;
+}
+
+.is-fullheight {
+  height: 100%;
+}
+
+
 button.navbar-burger {
   background-color: #363636;
   border: none;
