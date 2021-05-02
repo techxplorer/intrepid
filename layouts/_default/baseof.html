@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   {{ partial "head.html" . }}
+  {{ block "customhead" . }}{{ end }}
   <body>
     <div id="wrapper">
       <div class="container">
@@ -10,5 +11,6 @@
     </div>
     {{ partial "footer.html" . }}
     {{ partial "foot.html" . }}
+    {{ block "customfoot" . }}{{ end }}
   </body>
 </html>
