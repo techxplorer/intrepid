@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "postinstall",
-    "lint": "html-validate --config .htmlvalidate.json '../../public/**/*.html'"
+    "postinstall": "postinstall"
   },
   "author": "Corey Wallis <corey@techxplorer.com>",
   "license": "ISC",
