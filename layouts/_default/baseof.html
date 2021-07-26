@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-  {{ partial "head.html" . }}
-  {{ block "customhead" . }}{{ end }}
+  <head>
+    {{ partial "head.html" . }}
+    {{ block "customhead" . }}{{ end }}
+  </head>
   <body>
     <div id="wrapper">
       <div class="container">
