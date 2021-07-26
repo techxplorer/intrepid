@@ -78,6 +78,11 @@ h3 .feather {
   vertical-align: bottom;
 }
 
+i.feather {
+  height: 1em !important;
+  width: 1em !important;
+}
+
 /* improve display of cards */
 .card {
   display: flex;
