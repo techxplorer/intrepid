@@ -19,7 +19,7 @@
     $( "p" ).addClass( "mb-2" );
 
     // Add a class to all ol tags.
-    $( "ol" ).addClass( "mb-2 ml-4" );
+    $( "ol" ).addClass( "mb-2" );
 
     // Adjust the styling of the footer on mobile.
     if ( $( ".is-footer-menu ul" ).css( "flex-direction" ) === "column" ) {
