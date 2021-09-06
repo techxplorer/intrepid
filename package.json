@@ -10,12 +10,14 @@
   "author": "Corey Wallis <corey@techxplorer.com>",
   "license": "ISC",
   "devDependencies": {
+    "@creativebulma/bulma-divider": "^1.1.0",
     "eslint": "^7.20.0",
     "eslint-config-jquery": "^3.0.0",
     "jquery": "^3.5.1"
   },
   "postinstall": {
     "node_modules/bulma/*": "copy assets/css/bulma/",
+    "node_modules/@creativebulma/bulma-divider/dist/bulma-divider.css": "copy assets/css/",
     "node_modules/feather-icons/dist/feather.js": "copy assets/js/",
     "node_modules/jquery/dist/jquery.js": "copy assets/js/",
     "node_modules/jquery/dist/jquery.slim.js": "copy assets/js/",
