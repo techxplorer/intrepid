@@ -27,7 +27,7 @@
     }
 
     // Shuffle any random lists as required.
-    $( ".is-random ul" ).each( function( index, element ) {
+    $( ".is-random ul" ).each( function( _index, element ) {
       tinysort(
         element.children,
         {
