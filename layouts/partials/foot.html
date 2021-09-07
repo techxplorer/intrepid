@@ -4,7 +4,8 @@
 {{ end }}
 
 {{ $feather := resources.Get "js/feather.js" }}
+{{ $tinysort := resources.Get "js/tinysort.min.js" }}
 
 {{ $global := resources.Get "script.js" }}
-{{ $js := slice $jquery $feather $global | resources.Concat "js/bundle.js" | resources.Minify | fingerprint }}
+{{ $js := slice $jquery $feather $tinysort $global | resources.Concat "js/bundle.js" | resources.Minify | fingerprint }}
 <script src="{{ $js.Permalink }}"></script>

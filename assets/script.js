@@ -19,7 +19,7 @@
     $( "p" ).addClass( "mb-2" );
 
     // Add a class to all ol tags.
-    $( "ol" ).addClass( "mb-2 ml-4" );
+    $( "ol" ).addClass( "mb-2" );
 
     // Adjust the styling of the footer on mobile.
     if ( $( ".is-footer-menu ul" ).css( "flex-direction" ) === "column" ) {
@@ -27,35 +27,15 @@
     }
 
     // Shuffle any random lists as required.
-    $( ".is-random ul" ).randomizeChildrenOrder();
-
-  } );
-
-  /**
-   * Randomly shuffle the child elements of the parent element.
-   * Based on a technique from: https://stackoverflow.com/a/66907166
-   */
-  $.fn.randomizeChildrenOrder = function() {
-    this.each( function() {
-      var  childrenArray = $( this ).children().toArray();
-      var  shuffledChildrenArray = fisherYatesShuffle( childrenArray );
-      $( shuffledChildrenArray ).detach().appendTo( this );
+    $( ".is-random ul" ).each( function( _index, element ) {
+      tinysort(
+        element.children,
+        {
+          natural: true,
+          order: "rand"
+        }
+      );
     } );
-
-    return this;
-
-    // https://stackoverflow.com/a/2450976/665825
-    function fisherYatesShuffle( array ) {
-      var  currentIndex = array.length, temporaryValue, randomIndex;
-      while ( currentIndex !== 0 ) {
-        randomIndex = Math.floor( Math.random() * currentIndex );
-        currentIndex -= 1;
-        temporaryValue = array[ currentIndex ];
-        array[ currentIndex ] = array[ randomIndex ];
-        array[ randomIndex ] = temporaryValue;
-      }
-      return array;
-    }
-  };
+  } );
 
 } )( jQuery );

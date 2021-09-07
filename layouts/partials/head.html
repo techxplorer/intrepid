@@ -9,7 +9,8 @@
   <meta name="description" content="{{ partial "data/description" . }}"/>
 
   {{ $template := resources.Get "styles.scss" }}
-  {{ $style := $template | resources.ToCSS (dict "outputStyle" "compressed" "enableSourceMap" "true") | fingerprint }}
+  {{ $options := (dict "targetPath" "styles.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+  {{ $style := $template | resources.ToCSS $options | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}"/>
 
   <link rel="canonical" href="{{ .Permalink }}"/>
