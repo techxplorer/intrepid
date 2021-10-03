@@ -17,9 +17,9 @@
 
   {{ hugo.Generator }}
 
-  {{ template "_internal/opengraph.html" . }}
+  {{ partial "opengraph.html" . }}
 
-  {{ template "_internal/twitter_cards.html" . }}
+  {{ partial "twitter_cards.html" . }}
 
   {{ with .Site.Params.includeFavicon }}
     <link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | absURL }}"/>
