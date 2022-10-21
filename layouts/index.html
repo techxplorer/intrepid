@@ -1,9 +1,205 @@
 {{ define "main" }}
-{{ $image := .Resources.GetMatch "cover-photo.jpg" }}
-{{ partial "hero.html" (dict "context" . "hero_image" $image) }}
-<section class="box mt-2">
-  <div class="content">
-    {{ .Content }}
-  </div>
-</section>
+<div class="container">
+    <section class="hero has-text-light is-large" id="hero">
+        <div class="hero-body">
+          <div class="columns">
+            <div class="column">
+              <h1>
+                <span class="subtitle has-text-primary mb-5">
+                  {{ .Site.Params.hero.intro }}
+                </span><br>
+                <span class="title has-text-light is-size-1 mb-5">
+                  {{ .Site.Params.hero.title }}
+                </span>
+              </h1>
+              <p class="subtitle has-text-light is-size-2">
+                {{ .Site.Params.hero.subtitle }}
+              </p>
+              <div class="content">
+                {{ .Site.Params.hero.content | markdownify }}
+              </div>
+              <a class="button is-primary" href="{{print ( "/" | absURL) "#about" }}">About me</a>
+            </div>
+            <div class="column is-one-quarter is-justify-content-center">
+              <figure class="image is-hidden-mobile">
+                <img alt="" src="{{ .Site.Params.hero.image | absURL }}">
+              </figure>
+            </div>
+          </div>
+        </div>
+    </section>
+    <div class="hero">
+      <div class="hero-body">
+
+      </div>
+    </div>
+    <section class="hero has-background-primary-dark is-medium" id="about">
+      <div class="hero-body">
+        <div class="columns">
+          <div class="column is-one-quarter is-justify-content-center">
+            <figure class="image">
+              <img alt="" src="{{ .Site.Params.about.image | absURL }}">
+            </figure>
+          </div>
+          <div class="column">
+            <h2 class="title has-text-white	is-size-1">
+              {{ .Site.Params.about.title }}
+            </h2>
+            <div class="content">
+              {{ .Site.Params.about.content | markdownify }}
+              <ul>
+                {{ range .Site.Params.about.skills.items }}
+                <li>{{ . | markdownify }}</li>
+                {{ end }}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="hero">
+      <div class="hero-body">
+
+      </div>
+    </div>
+    <section class="hero is-warning is-medium" id="certifications">
+      <div class="hero-body">
+        <div class="content is-justify-content-center">
+          {{ range .Site.Params.certifications.badges.items }}
+            <div class="media">
+              <div class="media-content">
+                <div class="content">
+                  <h2 class="title is-2">{{ .title }}</h2>
+                  {{ .text | markdownify }}
+                  <p>
+                    A copy of the certificate is <a href="{{ .certifficate | absURL }}">available here</a>.
+                  </p>
+                </div>
+              </div>
+              <figure class="media-right is-hidden-mobile">
+                <p class="image is-128x128">
+                  {{ $image := resources.Get .badge }}
+                  {{ $png := $image.Resize "256x" }}
+                  {{ $webp := $image.Resize "256x webp icon" }}
+                  <picture>
+                    <source srcset="{{ $webp.Permalink }}" type="image/webp">
+                    <source srcset="{{ $png.Permalink }}" type="image/png">
+                    <img src="{{ $png.Permalink }} " alt="" width="{{ $png.Width }}" height="{{ $png.Height }}">
+                  </picture>
+                </p>
+              </figure>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+    <div class="hero">
+      <div class="hero-body">
+
+      </div>
+    </div>
+    <section class="hero is-link is-medium " id="projects">
+      <div class="hero-body">
+        <div class="columns">
+          <div class="column is-one-quarter is-justify-content-center">
+            <figure class="image">
+              <img alt="" src="{{ .Site.Params.projects.image | absURL }}">
+            </figure>
+          </div>
+          <div class="column">
+            <h2 class="title is-size-1">
+              {{ .Site.Params.projects.title }}
+            </h2>
+            <div class="content">
+              <p>
+                {{ .Site.Params.projects.content | markdownify }}
+              </p>
+              {{ range .Site.Params.projects.items }}
+                <p class="title is-size-3">{{ .title }}</p>
+                {{ .description | markdownify }}
+                <p>
+                  <a href="{{ .more }}" target="_blank" rel="noopener">More information</a>
+                </p>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="hero">
+      <div class="hero-body">
+
+      </div>
+    </div>
+    <section class="hero is-success is-medium " id="favourites">
+      <div class="hero-body">
+        <div class="columns">
+          <div class="column is-one-quarter is-justify-content-center">
+            <figure class="image">
+              <img alt="" src="{{ .Site.Params.favourites.image | absURL }}">
+            </figure>
+          </div>
+          <div class="column">
+            <h2 class="title is-size-1">
+              {{ .Site.Params.favourites.title }}
+            </h2>
+            <div class="content">
+              <p>
+                {{ .Site.Params.favourites.content | markdownify }}
+              </p>
+            </div>
+            <div class="columns is-multiline">
+                {{ range .Site.Params.favourites.items }}
+                  <div class="column is-4">
+                    <div class="content">
+                      <p class="title is-size-3">{{ .title }}</p>
+                      <ul>
+                      {{ range .links }}
+                        <li>
+                          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title | markdownify }}</a>
+                        </li>
+                      {{ end }}
+                      </ul>
+                    </div>
+                  </div>
+                {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="hero">
+      <div class="hero-body">
+
+      </div>
+    </div>
+    <section class="hero is-info is-medium" id="contact">
+      <div class="hero-body">
+        <div class="columns">
+          <div class="column is-one-quarter is-justify-content-center">
+            <figure class="image">
+              <img alt="" src="{{ .Site.Params.contact.image | absURL }}">
+            </figure>
+          </div>
+          <div class="column">
+            <h2 class="title is-size-1">
+              {{ .Site.Params.contact.title }}
+            </h2>
+            <div class="content">
+              {{ .Site.Params.contact.content | markdownify }}
+              <p>
+                <a class="button is-primary" href="mailto:{{ .Site.Params.contact.email }}">Contact me</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="hero">
+      <div class="hero-body">
+
+      </div>
+    </div>
+</div>
+
 {{ end }}

@@ -1,29 +1,30 @@
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Site.Title }}</title>
 
-  <title>{{ partial "data/title" . }}</title>
+{{ with $.Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
+{{ with $.Param "contactLink" }}<meta name="contact" content="{{ . }}">{{ end }}
+{{ with $.Param "description" }}<meta name="description" content="{{ . }}">{{ end }}
 
-  {{ with $.Param "author" }}<meta name="author" content="{{ . }}"/>{{ end }}
-  {{ with $.Param "contact" }}<meta name="contact" content="{{ . }}"/>{{ end }}
+<meta name="generator" content="Hugo {{ hugo.Version }}">
 
-  <meta name="description" content="{{ partial "data/description" . }}"/>
+<link rel="canonical" href="{{ .Permalink }}">
 
-  {{ $template := resources.Get "styles.scss" }}
-  {{ $options := (dict "targetPath" "styles.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-  {{ $style := $template | resources.ToCSS $options | fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}"/>
+{{ $options := (dict "targetPath" "styles.css" "outputStyle" "compressed" "enableSourceMap" true ) }}
+{{ $style := resources.Get "styles.scss" | resources.ToCSS $options }}
 
-  <link rel="canonical" href="{{ .Permalink }}"/>
+{{ if hugo.IsProduction }}
+  {{ $style = $style | resources.PostCSS  (dict "config" "./postcss.config.js") | resources.Minify | resources.Fingerprint "sha512"  }}
+{{ end }}
+<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
 
-  {{ hugo.Generator }}
+{{ with .Site.Params.includeFavicon }}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | absURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon-32x32.png" | absURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | absURL }}">
+  <link rel="manifest" href="{{ "/site.webmanifest" | absURL }}">
+{{ end }}
 
-  {{ partial "opengraph.html" . }}
+{{ partial "opengraph.html" . }}
 
-  {{ partial "twitter_cards.html" . }}
-
-  {{ with .Site.Params.includeFavicon }}
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | absURL }}"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon-32x32.png" | absURL }}"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | absURL }}"/>
-    <link rel="manifest" href="{{ "/site.webmanifest" | absURL }}"/>
-  {{ end }}
+{{ partial "twitter_cards.html" . }}
