@@ -1,21 +1,28 @@
-<footer class="footer pb-5 mt-4">
-  <div class="container has-text-centered">
-    <p>
-      A <a href="https://techxplorer.com">Techxplorer</a> project. Copyright © 2019 - {{ now.Year }}
-    </p>
-  </div>
-  <div class="container has-text-centered">
-    <ul>
-      {{ range .Site.Menus.social }}
-        <li><a href="{{ .URL }}" target="_blank" rel="noopener"><span class="is-sr-only">Open my {{ .Name }} account in a new tab</span>{{ with .Pre }}{{ partial "feather-icon.html" . }}{{ end }}</a></li>
+<footer class="footer">
+    <div class="content has-text-centered has-text-dark">
+      <p>
+        A <a href="https://techxplorer.com">Techxplorer</a> project. Copyright &copy; 2019 - {{ now.Year }}.
+      </p>
+    </div>
+    <div class="content has-text-centered has-text-dark">
+      <p>
+        Built using <a href="https://gohugo.io">Hugo</a>. Styled using <a href="https://bulma.io/">Bulma.</a> Graphics by <a href="https://www.iconfinder.com/popcornarts">popcornarts</a>. Icons by <a href="https://tablericons.com">Tabler Icons</a>.
+      </p>
+    </div>
+    <div class="level">
+      {{ range .Site.Params.footer.social.items }}
+        <div class="level-item has-text-centered">
+          <div>
+            <a href="{{ .url }}" target="_blank" rel="noopener"><span class="is-sr-only">Open my {{ .name }} account in a new tab</span>{{ .icon | safeHTML }}</a>
+          </div>
+        </div>
       {{ end }}
-    </ul>
-  </div>
-  <div class="container has-text-centered is-footer-menu">
-    <ul>
-    {{ range .Site.Menus.footer }}
-      <li> {{ .Pre }}: <a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
-    {{ end }}
-    </ul>
-  </div>
-</footer>
+    </div>
+  </footer>
+{{ $opts := dict "minify" false "sourceMap" "inline" "format" "iife"}}
+{{ if hugo.IsProduction }}
+  {{ $opts = dict "minify" true "sourceMap" "" "format" "iife"  }}
+{{ end }}
+{{ $js := resources.Get "scripts.js" | js.Build $opts }}
+{{ $secureJS := $js | resources.Fingerprint "sha512" }}
+<script src="{{ $js.Permalink }}" integrity="{{ $secureJS.Data.Integrity }}" defer></script>

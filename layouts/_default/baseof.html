@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
-    {{ partial "head.html" . }}
-    {{ block "customhead" . }}{{ end }}
+    {{- partial "head.html" . -}}
   </head>
-  <body>
-    <div id="wrapper">
-      <div class="container">
-        {{ partial "header.html" . }}
-        {{ block "main" . }}{{ end }}
-      </div>
-    </div>
-    {{ partial "footer.html" . }}
-    {{ partial "foot.html" . }}
-    {{ block "customfoot" . }}{{ end }}
+  <body class="has-background-dark has-text-light has-navbar-fixed-top">
+    {{- partial "header.html" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer.html" . -}}
   </body>
 </html>

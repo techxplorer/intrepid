@@ -1,11 +1,8 @@
 {
   "env": {
     "jquery": true,
-    "browser": true
-  },
-  "globals": {
-    "feather": "readonly",
-    "tinysort": "readonly"
+    "browser": true,
+    "es6": true
   },
   "extends": [
     "eslint:recommended",

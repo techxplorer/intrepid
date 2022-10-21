@@ -1,17 +1,32 @@
 {{ define "main" }}
-<section class="hero">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        {{ .Site.Params.title404 }}
-      </h1>
-      <h2 class="subtitle">
-        {{ .Site.Params.subtitle404 }}
-      </h2>
-      <p>
-        Go back to <a href="{{ "/" | absURL }}">the homepage</a>.
-      </p>
-    </div>
-  </div>
-</section>
+<div class="container">
+  <section class="hero has-text-light is-large" id="hero">
+      <div class="hero-body">
+        <div class="columns">
+          <div class="column">
+            <h1>
+              <span class="subtitle has-text-primary mb-5">
+                {{ .Site.Params.hero.intro }}
+              </span><br>
+              <span class="title has-text-light is-size-1 mb-5">
+                {{ .Site.Params.hero.title }}
+              </span>
+            </h1>
+            <p class="subtitle has-text-light is-size-2">
+              {{ .Site.Params.hero.subtitle }}
+            </p>
+            <div class="content">
+              The page you are looking for does not exist. Use the button below to go to the homepage.
+            </div>
+            <a class="button is-primary" href="{{ .Site.BaseURL }}">Go to homepage</a>
+          </div>
+          <div class="column is-one-quarter is-justify-content-center">
+            <figure class="image is-hidden-mobile">
+              <img alt="" src="{{ .Site.Params.hero.image | absURL }}">
+            </figure>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
 {{ end }}
