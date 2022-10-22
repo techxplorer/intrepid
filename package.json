@@ -1,18 +1,23 @@
 {
   "name": "intrepid",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A base theme for my web projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "postinstall"
   },
   "author": "Corey Wallis <corey@techxplorer.com>",
   "license": "MIT",
+  "postinstall": {
+    "node_modules/bulma/**": "copy assets/css/bulma/"
+  },
   "dependencies": {
     "bulma": "^0.9.4"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
-    "eslint-config-jquery": "^3.0.0"
+    "eslint-config-jquery": "^3.0.0",
+    "postinstall": "^0.8.0"
   }
 }
