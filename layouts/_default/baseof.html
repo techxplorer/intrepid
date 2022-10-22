@@ -4,8 +4,11 @@
     {{- partial "head.html" . -}}
   </head>
   <body class="has-background-dark has-text-light has-navbar-fixed-top">
-    {{- partial "header.html" . -}}
-    {{- block "main" . }}{{- end }}
-    {{- partial "footer.html" . -}}
+      {{- partial "header.html" . -}}
+      <div id="wrapper">
+        {{- block "main" . }}{{- end }}
+      </div>
+      {{- partial "footer.html" . -}}
+      {{- block "customfoot" . }}{{- end }}
   </body>
 </html>

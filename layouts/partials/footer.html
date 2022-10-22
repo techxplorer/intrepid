@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="content has-text-centered has-text-dark">
       <p>
-        A <a href="https://techxplorer.com">Techxplorer</a> project. Copyright &copy; 2019 - {{ now.Year }}.
+        A <a href="https://techxplorer.com">Techxplorer</a> project. Copyright &copy; {{ .Site.Params.copyrightYear | default 2019 }} - {{ now.Year }}.
       </p>
     </div>
     <div class="content has-text-centered has-text-dark">
