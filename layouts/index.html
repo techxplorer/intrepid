@@ -86,11 +86,15 @@
                   {{ $image := resources.Get .badge }}
                   {{ $png := $image.Resize "256x" }}
                   {{ $webp := $image.Resize "256x webp icon" }}
-                  <picture>
-                    <source srcset="{{ $webp.Permalink }}" type="image/webp">
-                    <source srcset="{{ $png.Permalink }}" type="image/png">
-                    <img src="{{ $png.Permalink }} " alt="" width="{{ $png.Width }}" height="{{ $png.Height }}">
-                  </picture>
+                  {{ if .link }}
+                  <a href="{{ .link }}" target="_blank" rel="noopener noreferrer">
+                    <picture>
+                      <source srcset="{{ $webp.Permalink }}" type="image/webp">
+                      <source srcset="{{ $png.Permalink }}" type="image/png">
+                      <img src="{{ $png.Permalink }} " alt="" width="{{ $png.Width }}" height="{{ $png.Height }}">
+                    </picture>
+                  </a>
+                  {{ end }}
                 </p>
               </figure>
             </div>
