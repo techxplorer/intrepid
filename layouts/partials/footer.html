@@ -6,14 +6,14 @@
     </div>
     <div class="content has-text-centered has-text-dark">
       <p>
-        Built using <a href="https://gohugo.io">Hugo</a>. Styled using <a href="https://bulma.io/">Bulma.</a> Graphics by <a href="https://www.iconfinder.com/popcornarts">popcornarts</a>. Icons by <a href="https://tablericons.com">Tabler Icons</a>.
+        Built using <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a>. Styled using <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma.</a> Graphics by <a href="https://www.iconfinder.com/popcornarts" target="_blank" rel="noopener noreferrer">popcornarts</a>. Icons by <a href="https://tabler-icons.io" target="_blank" rel="noopener noreferrer">Tabler Icons</a>.
       </p>
     </div>
     <div class="level">
       {{ range .Site.Params.footer.social.items }}
         <div class="level-item has-text-centered">
           <div>
-            <a href="{{ .url }}" target="_blank" rel="noopener"><span class="is-sr-only">Open my {{ .name }} account in a new tab</span>{{ .icon | safeHTML }}</a>
+            <a href="{{ .url }}" target="_blank" {{ with .rel }} rel="noopener noreferrer {{ . }}" {{ else }} rel="noopener noreferrer" {{ end }} title="{{ .name }}"><span class="is-sr-only">Open my {{ .name }} account in a new tab</span>{{ .icon | safeHTML }}</a>
           </div>
         </div>
       {{ end }}
