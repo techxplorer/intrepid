@@ -19,6 +19,8 @@
 {{ with $.Param "contactLink" }}<meta name="contact" content="{{ . }}">{{ end }}
 {{ with $.Param "description" }}<meta name="description" content="{{ . }}">{{ end }}
 
+{{ with .Site.Params.license }}<link rel="license" href="{{.}}">{{ end }}
+
 <meta name="generator" content="Hugo {{ hugo.Version }}">
 
 <link rel="canonical" href="{{ .Permalink }}">
