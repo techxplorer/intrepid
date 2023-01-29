@@ -1,8 +1,16 @@
 {{ define "main" }}
-<div class="container has-background-white has-text-grey-darker pb-6">
-  <section class="mt-4">
-    <div class="content my-4 px-4 pt-4">
+<div class="container has-background-white has-text-grey-darker pb-6 is-fullheight">
+  <section class="mt-4 has-background-white has-text-grey-darker pb-6">
+    <div class="content my-4 px-4 pt-4 is-clearfix">
       <h1>{{.Title}}</h1>
+      {{ if (.Params.toc) }}
+        <aside class="box is-pulled-right is-hidden-touch mx-2">
+            <header>
+            <h2 class="is-size-5 has-text-centered">Table of contents</h2>
+            </header>
+            {{.TableOfContents}}
+        </aside>
+      {{ end }}
       {{ .Content }}
     </div>
   </section>
