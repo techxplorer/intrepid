@@ -99,3 +99,9 @@ footer .level {
   max-width: 128px;
   object-fit: cover;
 }
+
+.is-story p:first-child:first-letter {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  initial-letter: 2;
+  -webkit-initial-letter: 2;
+}
