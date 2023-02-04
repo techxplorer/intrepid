@@ -93,3 +93,9 @@ footer .level {
   margin-left: 3px;
   vertical-align: text-bottom;
 }
+
+.is-gallery-thumb img {
+  max-height: 128px;
+  max-width: 128px;
+  object-fit: cover;
+}
