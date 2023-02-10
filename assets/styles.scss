@@ -110,3 +110,19 @@ footer .level {
   height: 256px;
   width: 256px;
 }
+
+@include desktop {
+  // Styles applied
+  // above $desktop
+  .is-data-list {
+    columns: 5;
+  }
+}
+
+@include tablet-only {
+  // Styles applied
+  // above $desktop
+  .is-data-list {
+    columns: 2;
+  }
+}
