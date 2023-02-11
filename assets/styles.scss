@@ -127,6 +127,16 @@ footer .level {
     columns: 2;
     orphans: 8;
   }
+
+  .is-story p {
+    text-align: justify;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .is-story p + p {
+    text-indent: 1rem;
+  }
 }
 
 @include tablet-only {
