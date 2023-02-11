@@ -104,6 +104,7 @@ footer .level {
   font-family: Georgia, 'Times New Roman', Times, serif;
   initial-letter: 2;
   -webkit-initial-letter: 2;
+  padding-right: 0.5rem
 }
 
 .image.is-256x256 {
@@ -111,11 +112,20 @@ footer .level {
   width: 256px;
 }
 
+.tag.is-link {
+  margin-top: 0.25rem;
+}
+
 @include desktop {
   // Styles applied
   // above $desktop
   .is-data-list {
     columns: 5;
+  }
+
+  .is-story {
+    columns: 2;
+    orphans: 8;
   }
 }
 
