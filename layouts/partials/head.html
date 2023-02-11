@@ -1,19 +1,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{{ $title := .Title }}
-{{ if .IsHome }}
-  {{ $title = .Site.Title }}
-{{ else if .IsPage }}
-  {{ with .Parent }}
-  {{ $title = print .Title " - " $title }}
-  {{ end }}
-{{ else if .IsSection }}
-  {{ $title = print .Site.Title " - "  .Title }}
-{{ end }}
-<title>
-  {{ $title }}
-</title>
+{{ if .IsHome -}}
+  <title>{{ .Site.Title }}</title>
+{{- else -}}
+  <title>{{ .Title }} – {{ .Site.Title }}</title>
+{{- end }}
 
 {{ with $.Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
 {{ with $.Param "contactLink" }}<meta name="contact" content="{{ . }}">{{ end }}
