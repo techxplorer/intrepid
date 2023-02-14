@@ -1,6 +1,6 @@
 {
   "name": "intrepid",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A base theme for my web projects",
   "main": "index.js",
   "scripts": {
