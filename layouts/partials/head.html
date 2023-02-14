@@ -1,10 +1,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ .Site.Title }}</title>
+
+{{ if .IsHome -}}
+  <title>{{ .Site.Title }}</title>
+{{- else -}}
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+{{- end }}
 
 {{ with $.Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
 {{ with $.Param "contactLink" }}<meta name="contact" content="{{ . }}">{{ end }}
 {{ with $.Param "description" }}<meta name="description" content="{{ . }}">{{ end }}
+
+{{ with .Site.Params.license }}<link rel="license" href="{{.}}">{{ end }}
 
 <meta name="generator" content="Hugo {{ hugo.Version }}">
 
@@ -24,6 +31,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | absURL }}">
   <link rel="manifest" href="{{ "/site.webmanifest" | absURL }}">
 {{ end }}
+
+{{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
 
 {{ partial "opengraph.html" . }}
 
