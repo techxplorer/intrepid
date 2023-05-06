@@ -54,6 +54,10 @@ footer .level {
   flex-direction: column;
 }
 
+.card-content {
+  overflow-x: hidden;
+}
+
 .card-footer {
   margin-top: auto
 }
