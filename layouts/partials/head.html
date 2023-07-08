@@ -10,7 +10,7 @@
 {{ with $.Param "author" }}<meta name="author" content="{{ . }}">{{ end }}
 {{ with $.Param "contactLink" }}<meta name="contact" content="{{ . }}">{{ end }}
 {{ with $.Param "description" }}<meta name="description" content="{{ . }}">{{ end }}
-{{ with $.Param "tags" }}<meta name="keywords" content="{{ delimit . ", "}}">{{ end }}
+{{ with $.Param "tags" }}<meta name="keywords" content="{{ (delimit . ", ") | humanize }}">{{ end }}
 
 {{ with .Site.Params.license }}<link rel="license" href="{{.}}">{{ end }}
 
