@@ -1,3 +1,9 @@
+{{- with (index (.Resources.ByType "image") 0) -}}
+  {{- $image := . -}}
+  {{- $image := $image.Fill "1200x630 Lanczos" -}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ $image.Permalink }}">
+{{- else }}
 {{- with $.Params.images -}}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{{ index . 0 | absURL }}">
@@ -7,7 +13,7 @@
 {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
 {{- with $featured -}}
 <meta name="twitter:card" content="summary_large_image">
-{{- $featured := $featured.Resize "x2048" -}}
+{{- $featured := $featured.Fill "1200x630 Lanczos" -}}
 <meta name="twitter:image" content="{{ $featured.Permalink }}">
 {{- else -}}
 {{- with $.Site.Params.images -}}
@@ -18,11 +24,12 @@
 {{- end -}}
 {{- end -}}
 {{- end }}
+{{ end }}
 {{ if .IsHome -}}
   <meta name="twitter:title" content="{{ .Title }}" />
-{{- else -}}
+{{ else -}}
   <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
-{{- end }}
+{{ end }}
 <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
 {{ with .Site.Social.twitter -}}
 <meta name="twitter:site" content="@{{ . }}">
