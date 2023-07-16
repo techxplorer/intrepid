@@ -7,6 +7,11 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" >
 <meta property="og:url" content="{{ .Permalink }}" >
 
+{{- with (index (.Resources.ByType "image") 0) -}}
+  {{- $image := . -}}
+  {{- $image := $image.Fill "1200x630 Lanczos" -}}
+  <meta property="og:image" content="{{ $image.Permalink }}">
+{{- else -}}
 {{- with $.Params.images -}}
 {{- range first 6 . }}<meta property="og:image" content="{{ . | absURL }}" >{{ end -}}
 {{- else -}}
@@ -14,10 +19,11 @@
 {{- $featured := $images.GetMatch "*feature*" -}}
 {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
 {{- with $featured -}}
-{{- $featured := $featured.Resize "x2048" -}}
+{{- $featured := $featured.Fill "1200x630 Lanczos" -}}
 <meta property="og:image" content="{{ $featured.Permalink }}">
 {{- else -}}
 {{- with $.Site.Params.images }}<meta property="og:image" content="{{ index . 0 | absURL }}">{{ end -}}
+{{- end -}}
 {{- end -}}
 {{- end -}}
 
